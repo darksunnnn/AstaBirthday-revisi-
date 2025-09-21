@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asta Birthday</title>
+    <link rel="icon" href="logo.png" type="image/png">
+  <style>
+  /* Background senja pink oren */
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background: linear-gradient(to top, #ff9a9e, #fecfef, #fbc2eb, #fda085);
+  background-size: 400% 400%;
+  animation: gradientFlow 20s ease infinite;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Awan blur */
+.cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.7); /* lebih tebal */
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: cloudMove linear infinite;
+}
+
+@keyframes cloudMove {
+  from { transform: translateX(-300px); }
+  to { transform: translateX(100vw); }
+}
+
+
+
+    .slideshow-wrapper {
+      position: relative;
+    }
+
+    .slideshow-container {
+      width: 300px;
+      height: 450px;
+      border: 10px solid #ffb6c1;
+      border-radius: 25px;
+      box-shadow: 0 8px 20px rgba(255, 182, 193, 0.6);
+      background: #fff;
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+    }
+
+    .slides {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 3s ease-in-out;
+    }
+
+    .slides img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Foto penuh, tidak terpotong */
+  display: block; 
+}
+
+
+    /* Tombol navigasi */
+    .prev, .next {
+  display: none !important;
+}
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      padding: 12px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      background: rgba(255, 182, 193, 0.7);
+      border-radius: 50%;
+      user-select: none;
+      transition: 0.3s;
+      z-index: 3;
+    }
+
+    .next { right: 10px; }
+    .prev { left: 10px; }
+
+    .prev:hover, .next:hover {
+      background: rgba(255, 105, 180, 0.9);
+    }
+
+    /* Titik indikator */
+    .dots {
+      text-align: center;
+      padding: 10px;
+      border-top: 2px dashed #ffb6c1;
+      border-radius: 0 0 15px 15px;
+    }
+
+    .dot {
+      cursor: pointer;
+      height: 15px;
+      width: 15px;
+      margin: 0 5px;
+      background-color: #ffc0cb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active, .dot:hover {
+      background-color: #ff69b4;
+    }
+
+    /* Dekorasi bunga & balon */
+    .decoration {
+      position: absolute;
+      font-size: 60px;
+      animation: float 5s infinite ease-in-out;
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    /* Efek bintang jatuh */
+.star {
+  position: fixed;
+  top: -10px;
+  width: 4px;
+  height: 4px;
+  background: rgb(238, 43, 231);            /* warna emas biar kelihatan */
+  border-radius: 50%;
+  opacity: 0.9;
+  pointer-events: none;
+  animation: falling 5s linear forwards;
+  z-index: 9999;               /* taruh paling atas */
+  box-shadow: 0 0 8px gold;    /* efek glow */
+}
+
+@keyframes falling {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(50vw) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.shooting-star {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 3px;
+  background: rgb(255, 255, 255);
+  box-shadow: 0 0 6px white, 0 0 12px rgb(255, 255, 255);
+  border-radius: 50%;
+  opacity: 0;
+  transform: rotate(45deg);
+  animation: fall 3s linear forwards;
+  z-index: 9999;
+}
+
+.shooting-star::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100px;  /* panjang ekor */
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, rgb(237, 156, 223), transparent);
+}
+
+@keyframes fall {
+  0% {
+    transform: translate(0,0) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100vw, 100vh) rotate(45deg); /* jatuh diagonal ↘ */
+    opacity: 0;
+  }
+}
+.music-btn {
+  position: absolute;
+  bottom: 20px;   /* atur jarak dari bawah frame */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ff9bb0;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 999; /* pastikan di atas dot */
+}
+
+.music-btn:hover {
+  background-color: #ff7a95;
+  transform: translateX(-50%) scale(1.1);
+}
+
+.balon {
+  position: absolute;
+  bottom: -100px;
+  font-size: 40px;
+  animation: floatUp 8s linear forwards;
+  opacity: 0;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
+
+
+
+
+    .flower { color: #ff69b4; }
+    .balloon { color: #ffcc00; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+  </style>
+</head>
+<body>
+    
+<!-- Awan banyak biar padat -->
+<div class="cloud" style="width:250px; height:120px; top:20%; left:-200px; animation-duration:70s;"></div>
+<div class="cloud" style="width:300px; height:150px; top:40%; left:-300px; animation-duration:90s;"></div>
+<div class="cloud" style="width:200px; height:100px; top:60%; left:-100px; animation-duration:60s;"></div>
+<div class="cloud" style="width:280px; height:140px; top:30%; left:-250px; animation-duration:100s;"></div>
+<div class="cloud" style="width:220px; height:110px; top:50%; left:-150px; animation-duration:80s;"></div>
+
+    
+  <div class="slideshow-wrapper">
+
+    <!-- Slideshow -->
+    <div class="slideshow-container">
+        
+         <button class="music-btn" onclick="toggleMusic()" id="music-btn">🎵</button>
+         <audio id="bg-music" loop>
+  <source src="Love Epiphany (mp3cut.net).mp3" type="audio/mpeg">
+</audio>
+      <div class="slides">
+  <img src="1.jpeg" alt="Foto 1">
+  <img src="2.jpeg" alt="Foto 2">
+  <img src="3.jpeg" alt="Foto 3">
+  <img src="4.jpeg" alt="Foto 4">
+  <img src="5.jpeg" alt="Foto 5">
+  <img src="6.jpeg" alt="Foto 6">
+  <img src="7.jpeg" alt="Foto 7">
+  <img src="8.jpeg" alt="Foto 8">
+  <img src="9.jpeg" alt="Foto 9">
+  <img src="10.jpeg" alt="Foto 10">
+</div>
+
+
+      <!-- Tombol navigasi -->
+      <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
+      <a class="next" onclick="moveSlide(1)">&#10095;</a>
+    </div>
+
+    <!-- Titik indikator -->
+    <!-- ...existing code... -->
+<div class="dots">
+  <span class="dot" onclick="goToSlide(0)"></span>
+  <span class="dot" onclick="goToSlide(1)"></span>
+  <span class="dot" onclick="goToSlide(2)"></span>
+  <span class="dot" onclick="goToSlide(3)"></span>
+  <span class="dot" onclick="goToSlide(4)"></span>
+  <span class="dot" onclick="goToSlide(5)"></span>
+  <span class="dot" onclick="goToSlide(6)"></span>
+  <span class="dot" onclick="goToSlide(7)"></span>
+  <span class="dot" onclick="goToSlide(8)"></span>
+  <span class="dot" onclick="goToSlide(1)"></span>
+</div>
+<!-- ...existing code... -->
+  </div>
+
+  <script>
+  const music = document.getElementById("bg-music");
+  const btn = document.getElementById("music-btn");
+
+  function toggleMusic() {
+    if (music.paused) {
+      music.play();
+      btn.textContent = "🔇";
+    } else {
+      music.pause();
+      btn.textContent = "🎵";
+    }
+  }
+</script>
+
+<script>
+function createBalloon(delay = 0) {
+  setTimeout(() => {
+    const balloon = document.createElement("div");
+    balloon.classList.add("balon");
+
+    // pilih emoji balon acak 🎈🎉
+    const emojis = ["🎈"];
+    balloon.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+    // posisi horizontal random
+    balloon.style.left = Math.random() * window.innerWidth + "px";
+
+    // ukuran random
+    balloon.style.fontSize = (Math.random() * 20 + 30) + "px";
+
+    document.body.appendChild(balloon);
+
+    // hapus setelah animasi selesai
+    setTimeout(() => {
+      balloon.remove();
+    }, 8000);
+  }, delay);
+}
+
+// Loop terus: tiap 4 detik bikin 2 balon (selisih 1 detik)
+setInterval(() => {
+  createBalloon();      // balon pertama
+  createBalloon(1000);  // balon kedua (muncul 1 detik setelahnya)
+}, 4000);
+</script>
+
+
+
+  <script>
+    let slideIndex = 0;
+    const slides = document.querySelector(".slides");
+    const dots = document.querySelectorAll(".dot");
+    const totalSlides = dots.length;
+
+   // ...existing code...
+function updateSlidePosition() {
+  slides.style.transform = `translateX(-${slideIndex * 300}px)`; // 300px = lebar satu foto
+  dots.forEach(dot => dot.classList.remove("active"));
+  dots[slideIndex].classList.add("active");
+}
+// ...existing code...
+
+    function moveSlide(step) {
+      slideIndex = (slideIndex + step + totalSlides) % totalSlides;
+      updateSlidePosition();
+    }
+
+    function goToSlide(index) {
+      slideIndex = index;
+      updateSlidePosition();
+    }
+
+    // Auto slide
+    setInterval(() => {
+      moveSlide(1);
+    }, 4000);
+
+    function createStar() {
+  const star = document.createElement("div");
+  star.classList.add("star");
+
+  // posisi random
+  star.style.left = Math.random() * window.innerWidth + "px";
+
+  // ukuran random
+  const size = Math.random() * 4 + 2;
+  star.style.width = size + "px";
+  star.style.height = size + "px";
+
+  // durasi jatuh random
+  const duration = Math.random() * 3 + 3;
+  star.style.animationDuration = duration + "s";
+
+  // delay random
+  star.style.animationDelay = Math.random() * 3 + "s";
+
+  document.body.appendChild(star);
+
+  // hapus setelah selesai
+  setTimeout(() => {
+    star.remove();
+  }, duration * 1000);
+}
+
+setInterval(() => {
+  for (let i = 0; i < 3; i++) {
+    createStar();
+  }
+}, 100);
+
+function createShootingStar() {
+  const star = document.createElement("div");
+  star.classList.add("shooting-star");
+
+  // mulai agak random di kiri atas
+  star.style.top = Math.random() * 100 + "px";   // 0–100px dari atas
+  star.style.left = Math.random() * 100 + "px";  // 0–100px dari kiri
+
+  document.body.appendChild(star);
+
+  setTimeout(() => {
+    star.remove();
+  }, 3000); // sesuai durasi animasi
+}
+
+// bikin beberapa bintang sekaligus tiap "gelombang"
+setInterval(() => {
+  for (let i = 0; i < 1; i++) {   // jumlah bintang per gelombang
+    setTimeout(createShootingStar, i * 300); // selisih waktu antar bintang
+  }
+}, 7000); // tiap 4 detik hujan bintang baru
+
+
+    // Set awal
+    updateSlidePosition();
+  </script>
+</body>
+</html>

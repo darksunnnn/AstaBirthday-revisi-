@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asta Birthday</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f7e9e9;
+            color: #d17a7a;
+            text-align: center;
+            flex-direction: column;
+        }
+        .intro-text {
+            font-size: 2.5em;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+            animation-delay: 1s;
+        }
+        .intro-link {
+            font-size: 1.5em;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #d17a7a;
+            border: 2px solid #d17a7a;
+            padding: 10px 20px;
+            border-radius: 5px;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+            animation-delay: 3s;
+        }
+        .intro-link:hover {
+    background-color: #d17a7a; /* Warna latar belakang saat di-hover */
+    color: #fff; /* Warna teks saat di-hover */
+    border-color: #d17a7a; /* Warna garis tepi saat di-hover (opsional) */
+}
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="intro-text">Ada sesuatu yang spesial untukmu asta</div>
+    <a href="halaman-2.html" class="intro-link">Klik di sini</a>
+</body>
+</html>

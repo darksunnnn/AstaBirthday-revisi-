@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asta Birthday</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #f7e9e9;
+            color: #d17a7a;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cake-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .cake {
+            font-size: 10em;
+            animation: bounce 1s infinite;
+        }
+
+        .message {
+            margin-top: 20px;
+            animation: fadeIn 2s forwards;
+            animation-delay: 1s;
+            opacity: 0;
+        }
+        .next-link {
+    font-size: 1.2em; /* Atur ukuran font agar terlihat lebih pas */
+    margin-top: 50px; /* Atur jarak di atas link agar turun ke bawah */
+    text-decoration: none;
+    color: #d17a7a;
+    transition: color 0.3s ease; /* Transisi yang halus saat hover */
+}
+ 
+
+/* Kode untuk efek hover */
+.next-link:hover {
+    color: #b56c6c; /* Ganti warna link menjadi lebih gelap saat di-hover */
+}
+
+
+        /* --- Area Confetti Seluruh Halaman --- */
+        .confetti-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 5;
+            pointer-events: none;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff4d4d;
+            border-radius: 50%;
+            opacity: 0;
+            animation: confetti-fall 6s linear infinite;
+        }
+
+        /* ----- Keyframes Animasi ----- */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Pergerakan Kucing Baru */
+        @keyframes walk-and-bounce {
+            0% { left: -10%; transform: translateY(0) rotate(0deg); }
+            5% { transform: translateY(-10px) rotate(5deg); }
+            10% { transform: translateY(0) rotate(0deg); }
+            15% { transform: translateY(-10px) rotate(-5deg); }
+            20% { transform: translateY(0) rotate(0deg); }
+            /* Mengulang pola melompat sampai akhir */
+            100% { left: 110%; transform: translateY(0) rotate(0deg); }
+        }
+        
+        /* Animasi Jatuhnya Confetti */
+        @keyframes confetti-fall {
+            0% { transform: translate(0, -100px) rotate(0deg) scale(0); opacity: 0; }
+            1% { transform: scale(1); opacity: 1; }
+            100% { transform: translate(var(--x), 100vh) rotate(720deg) scale(0.8); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="confetti-container">
+        <div class="confetti" style="left: 10%; background-color: #ff4d4d; --x: 10px; animation-delay: 0s;"></div>
+        <div class="confetti" style="left: 20%; background-color: #4da6ff; --x: 20px; animation-delay: 0.5s;"></div>
+        <div class="confetti" style="left: 30%; background-color: #fff066; --x: 30px; animation-delay: 1s;"></div>
+        <div class="confetti" style="left: 40%; background-color: #d8c1ff; --x: -20px; animation-delay: 1.5s;"></div>
+        <div class="confetti" style="left: 50%; background-color: #ffc1e3; --x: -10px; animation-delay: 2s;"></div>
+        <div class="confetti" style="left: 60%; background-color: #ffb884; --x: -30px; animation-delay: 2.5s;"></div>
+        <div class="confetti" style="left: 70%; background-color: #ff4d4d; --x: -15px; animation-delay: 3s;"></div>
+        <div class="confetti" style="left: 80%; background-color: #4da6ff; --x: -5px; animation-delay: 3.5s;"></div>
+        <div class="confetti" style="left: 90%; background-color: #fff066; --x: 5px; animation-delay: 4s;"></div>
+        <div class="confetti" style="left: 25%; background-color: #d8c1ff; --x: 15px; animation-delay: 4.5s;"></div>
+        <div class="confetti" style="left: 55%; background-color: #ffb884; --x: -25px; animation-delay: 5s;"></div>
+        </div>
+
+    <div class="cake-container">
+        <div class="cake">🎂</div>
+        <h2 class="message">Tiup lilinnya dulu sayang! 🥳</h2>
+    </div>
+    
+<a href="halaman-4.html" class="next-link">Lanjut ke kejutan berikutnya -></a>
+</body>
+</html>
